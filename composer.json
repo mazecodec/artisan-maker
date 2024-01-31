@@ -1,0 +1,68 @@
+{
+    "name": "mazecodec/artisan-maker",
+    "description": "A simple package that can help you to create a boilerplate of a service or action class.",
+    "type": "library",
+    "keywords": [
+        "laravel",
+        "mazecodec",
+        "artisan-maker"
+    ],
+    "authors": [
+        {
+            "name": "mazecodec",
+            "email": "mazecodec.tec@gmail.com"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^8.1",
+        "spatie/laravel-package-tools": "^1.9.2"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.19"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mazecodec\\ArtisanMaker\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Mazecodec\\ArtisanMaker\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Mazecodec\\ArtisanMaker\\ArtisanMakerServiceProvider"
+            ],
+            "aliases": {
+                "ArtisanMaker": "Mazecodec\\ArtisanMaker\\Facades\\ArtisanMaker"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@clear",
+            "@prepare"
+        ],
+        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "serve": [
+            "Composer\\Config::disableProcessTimeout",
+            "@build",
+            "@php vendor/bin/testbench serve"
+        ],
+        "test": [
+            "@php vendor/bin/phpunit"
+        ]
+    },
+    "minimum-stability": "dev",
+    "version": "1.0.0"
+}

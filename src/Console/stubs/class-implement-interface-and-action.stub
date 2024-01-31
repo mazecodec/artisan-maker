@@ -1,0 +1,15 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ interfaceUseNamespace }};
+use {{ actionUseNamespace }};
+
+class {{ className }} implements {{ interfaceName }}
+{
+    private {{ actionName }} {{ actionVariable }};
+
+    public function __construct({{ actionName }} ${{ actionVariable }}) {
+        $this->{{ actionVariable }} = ${{ actionVariable }};
+    }
+}
